@@ -8,3 +8,14 @@ jobs: # 全てのjobをグループ化
       - uses: actions/setup-node@v1 # nodeがランナーにインストールされる。これによりnpmが使用可能
       - run: npm install -g bats # runキーワードはランナーにコマンドを実行するように指示。batsインストール
       - run: bats -v # batsのバージョンを出力するコマンドの実行
+  node:
+    runs-on: ubuntu-latest
+    setups:
+      - uses: actions/checkout@v2
+      - name: Use Node.js # stepの名前
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x" # nodeのバージョン指定
+      - name: 依存関係のインストール
+        #run: npm install
+        run: yarn
