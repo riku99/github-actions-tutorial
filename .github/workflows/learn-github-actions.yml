@@ -1,10 +1,10 @@
 name: learn-github-actions
 on: [push]
-jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install -g bats
-      - run: bats -v
+jobs: # 全てのjobをグループ化
+  check-bats-version: # 個のjobを名前ともに定義。
+    runs-on: ubuntu-latest # jobは仮装環境で実行されるので、その環境の指定
+    steps: # このjobで実行される全ての手順をグループ化
+      - uses: actions/checkout@v2 # usesはコミュニティアクションを実行するよう指示。 actions/checkout@v2というコミュニティアクションの使用。 ランナー(実行環境となるサーバ)にリポジトリをダウンロード。基本的にこれ必須
+      - uses: actions/setup-node@v1 # nodeがランナーにインストールされる。これによりnpmが使用可能
+      - run: npm install -g bats # runキーワードはランナーにコマンドを実行するように指示。batsインストール
+      - run: bats -v # batsのバージョンを出力するコマンドの実行
