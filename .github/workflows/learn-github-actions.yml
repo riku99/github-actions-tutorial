@@ -10,7 +10,7 @@ jobs: # 全てのjobをグループ化
       - run: bats -v # batsのバージョンを出力するコマンドの実行
   node:
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - uses: actions/checkout@v2
       - name: Use Node.js # stepの名前
         uses: actions/setup-node@v1
